@@ -1,0 +1,9 @@
+django
+django-mathfilters
+tzlocal
+pillow
+markdown2
+bleach
+gunicorn
+cython
+setuptools

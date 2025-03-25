@@ -1,0 +1,218 @@
+{% load string_filters %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% if request.resolver_match.view_name == "home" %}PXEPro | Diskless Boot Solution{% else %}{% if request.resolver_match.view_name == "pricing" %}Plans & Pricing{% elif request.resolver_match.view_name %}{{ request.resolver_match.view_name|reverse_slugify }}{% else %}Page Not Found{% endif %} | PXEPro{% endif %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+	
+	{% load static %}
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon" type="image/x-icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar & Carousel Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+            <a href="{% url 'home' %}" class="navbar-brand p-0">
+				{% load static %}
+                <img id="site-icon" src="/static/img/icon.png" style="max-height: 60px;" />
+                <img id="site-logo" src="/static/img/logo-white.png" style="max-height: 60px;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+					{% url 'home' as HOME_URL %}
+                    <a href="{{ HOME_URL }}" class="nav-item nav-link {% if request.path == HOME_URL %}active{% endif %}">Home</a>
+					{% url 'about' as ABOUT_URL %}
+                    <a href="{{ ABOUT_URL }}" class="nav-item nav-link {% if request.path == ABOUT_URL %}active{% endif %}">About</a>
+                    {% url 'pricing' as PRICING_URL %}
+                    <a href="{{ PRICING_URL }}" class="nav-item nav-link {% if request.path == PRICING_URL %}active{% endif %}">Plans & Pricing</a>
+                    {% url 'cloud-boot' as CLOUD_URL %}
+                    <a href="{{ CLOUD_URL }}" class="nav-item nav-link {% if request.path == CLOUD_URL %}active{% endif %}">Cloud Boot</a>
+                    <div class="nav-item dropdown">
+                        <a href="{% url 'support' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Support</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="{% url 'guides' %}" class="dropdown-item">Guides & Documentation</a>
+                            <a href="{% url 'frequently-asked-questions' %}" class="dropdown-item">Frequently Asked Questions</a>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
+                <a href="https://cloud.pxepro.soatrix.com/" class="btn btn-primary py-2 px-4 ms-3">Cloud Portal</a>
+            </div>
+        </nav>
+
+        {% if request.resolver_match.view_name == "solution-detail" or request.resolver_match.view_name == "solution-licence" %}
+            {% include "website/solution_header.html" %}
+        {% elif request.resolver_match.view_name == "service-detail" %}
+            {% include "website/service_header.html" %}
+		{% elif request.resolver_match.view_name == "home" %}
+			{% include "website/home_header.html" %}
+		{% else %}
+			{% include "website/page_header.html" %}
+		{% endif %}
+    </div>
+    <!-- Navbar & Carousel End -->
+
+
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full Screen Search End -->
+
+	{% block page_content %}
+	{% endblock %}
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-left h-100 bg-primary p-4">
+                        <a href="{% url 'home' %}" class="navbar-brand">
+							{% load static %}
+							<img src="/static/img/icon.png" style="max-height: 100px;" />
+                        </a>
+                        <p class="mt-3 mb-4">PXE Pro is a powerful diskless boot solution that enables multiple machines to boot from the same hard drive or file system simultaneously, simplifying system management and reducing hardware costs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6">
+                    <div class="row gx-5">
+                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Get In Touch</h3>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">Coming Soon</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-envelope-open text-primary me-2"></i>
+                                <p class="mb-0">info@soatrix.com</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-primary me-2"></i>
+                                <p class="mb-0">Coming Soon</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Quick Links</h3>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <a class="text-light mb-2" href="{% url 'about' %}"><i class="bi bi-arrow-right text-primary me-2"></i>About PXEPro</a>
+                                <a class="text-light mb-2" href="{% url 'support' %}"><i class="bi bi-arrow-right text-primary me-2"></i>Help & Support</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-white" style="background: #000;">
+        <div class="container text-center">
+            <div class="row justify-content-end">
+                <div class="col-lg-8 col-md-6">
+                    <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
+                        <p class="mb-0">2024 &copy; <a class="text-primary" href="{% url 'home' %}">PXEPro</a>, All Rights Reserved. | Created by <a class="text-primary" href="https://www.soatrix.com/">Soatrix</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	
+	{% load static %}
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    {% block footer_scripts %}{% endblock %}
+	
+	
+    {% if CHAT_ENABLED %}
+    <script>
+      (function(d,t) {
+        var BASE_URL="https://chatwoot.soatrix.com";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'ANcrguYrR7xNyfmc4oeoPqeX',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+	{% endif %}
+    
+</body>
+
+</html>

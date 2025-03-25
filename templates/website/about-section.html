@@ -1,0 +1,86 @@
+<!-- About Start -->
+    <div class="container-fluid py-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-7">
+                    <div class="section-title position-relative pb-3 mb-5">
+                        <h5 class="fw-bold text-primary text-uppercase">About The Solution</h5>
+                        <h1 class="mb-0">Why You Should Use It?</h1>
+                    </div>
+                    <p class="mb-4">PXE Pro is a powerful diskless boot solution that enables multiple machines to boot from the same hard drive or file system simultaneously, simplifying system management and reducing hardware costs. It’s ideal for environments where consistency, scalability, and efficiency are key, allowing you to deploy and update systems without the need for individual storage on each machine. With PXE Pro, you can streamline your infrastructure and ensure uniform performance across all devices.</p>
+                    <div class="row g-0 mb-3">
+                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
+                            <h5 class="mb-3"><i class="fa fa-shield-alt text-primary me-3"></i>Trusted Security</h5>
+                            <h5 class="mb-3"><i class="fa fa-chart-line text-primary me-3"></i>Proven Results</h5>
+                            <h5 class="mb-3"><i class="fa fa-rocket text-primary me-3"></i>Rapid Deployment</h5>
+                        </div>
+                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
+                            <h5 class="mb-3"><i class="fa fa-headset text-primary me-3"></i>24/7 Support</h5>
+                            <h5 class="mb-3"><i class="fa fa-cloud text-primary me-3"></i>Cloud Support</h5>
+                            <h5 class="mb-3"><i class="fa fa-comments-dollar text-primary me-3"></i>Fair Prices</h5>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request A Demo</a>
+                    <a href="{% url 'about' %}" class="btn btn-outline-primary py-3 px-5 mx-2 mt-3 wow zoomIn" data-wow-delay="0.9s">Plans & Pricing</a>
+                </div>
+                <div class="col-lg-5" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        {% load static %}
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="{% static 'img/carousel-2.jpg' %}" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Features Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" style="background: #eee;">
+        <div class="container">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">Why Choose Us</h5>
+                <h1 class="mb-0">We're The Smart Choice for Your Technology Needs</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 justify-content-between">
+                    <div class="row">
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
+                            <div class="bg-primary rounded mb-3 px-3 py-2">
+                                <h4 class="text-white"><i class="fa fa-globe fa-xs p-1 pt-3"></i> Centralized Management</h4>
+                            </div>
+                            <p class="mb-0">PXE Pro allows you to manage all your machines from a single source, eliminating the need to configure each machine individually. This centralized approach simplifies maintenance, reduces administrative overhead, and ensures that all devices are using the same configurations and software versions.</p>
+                        </div>
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
+                            <div class="bg-primary rounded mb-3 px-3 py-2">
+                                <h4 class="text-white"><i class="fa fa-dollar-sign fa-xs p-1 pt-3"></i> Cost Effiency</h4>
+                            </div>
+                            <p class="mb-0">By eliminating the need for individual hard drives or local storage on each machine, PXE Pro significantly reduces hardware costs. You can maximize resource utilization and save on storage, especially in environments with large fleets of machines.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
+                    <div class="position-relative h-100">
+                        {% load static %}
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s" src="{% static 'img/analyst.png' %}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-4 justify-content-between">
+                    <div class="row g-5">
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
+                            <div class="bg-primary rounded mb-3 px-3 py-2">
+                                <h4 class="text-white"><i class="fa fa-server fa-xs p-1 pt-3"></i> Scalability</h4>
+                            </div>
+                            <p class="mb-0">Whether you're working with a few machines or thousands, PXE Pro scales effortlessly. It’s designed to handle simultaneous boot requests, making it perfect for expanding IT infrastructures that need to maintain uniformity without sacrificing performance.</p>
+                        </div>
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.8s">
+                            <div class="bg-primary rounded mb-3 px-3 py-2">
+                                <h4 class="text-white"><i class="fa fa-sync fa-xs p-1 pt-3"></i> Quality Assurance</h4>
+                            </div>
+                            <p class="mb-0">PXE Pro enables you to deploy and update systems quickly across all machines. Any changes to the operating system, software, or configurations can be applied instantly, reducing downtime and ensuring that all devices stay up to date with minimal effort.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

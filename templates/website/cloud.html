@@ -1,0 +1,45 @@
+{% extends "website/base.html" %}
+
+{% block page_content %}
+<div class="container-fluid py-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-7">
+                    <div class="section-title position-relative pb-3 mb-5">
+                        <h5 class="fw-bold text-primary text-uppercase">Cloud Powered Solution</h5>
+                        <h1 class="mb-0">What is Cloud Boot?</h1>
+                    </div>
+                    <p class="mb-4">Cloud Boot is a diskless boot solution that allows systems to securely boot from cloud-hosted images, eliminating the need for on-site storage. By leveraging the power of the cloud, Cloud Boot enables organizations to deploy, manage, and update systems remotely, offering flexibility, scalability, and convenience. This solution is ideal for businesses looking to reduce infrastructure costs, centralize control, and ensure seamless, secure access to bootable images from anywhere with an internet connection.</p>
+                    <p><strong>Note:</strong> This service is still currently in development and is not yet offered. For further updates please follow the Soatrix Blog <a href="https://www.soatrix.com/blog/">here</a>.</p>
+                    <hr>
+                    <div class="section-title position-relative mb-3">
+                        <h3 class="mb-0">Subscribe to Notifications</h3>
+                    </div>
+                    <p>Would you like to be notified when our cloud boot platform launches? Drop your email in below to subscribe to future updates.</p>
+                    {% if success %}
+                        <div class="alert alert-success">You have successfully subscribed to cloud boot notifications.</div>
+                    {% else %}
+                        {% if message %}
+                            <div class="alert alert-danger">{{ message }}</div>
+                        {% endif %}
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" aria-label="Your Email Address">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary" type="submit" name="subscribe">Subscribe</button>
+                                </div>
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+                <div class="col-lg-5" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        {% load static %}
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="{% static 'img/server-cloud.png' %}" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

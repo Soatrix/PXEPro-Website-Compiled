@@ -1,0 +1,32 @@
+{% extends "website/base.html" %}
+
+{% block page_content %}
+<div class="container-fluid wow fadeInUp mb-5" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
+            <h5 class="fw-bold text-primary text-uppercase">Frequently Asked Questions</h5>
+            <h1 class="mb-0">Find answers to Common Questions</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="accordion" id="faq-accordion">
+                    {% for question in QUESTIONS %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-{{ question.id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-{{ question.id }}" aria-expanded="false" aria-controls="faq-{{ question.id }}">
+                                    {{ question.question }}
+                                </button>
+                            </h2>
+                            <div id="faq-{{ question.id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ question.id }}" data-bs-parent="#faq-accordion">
+                                <div class="accordion-body">
+                                    {{ question.answer }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

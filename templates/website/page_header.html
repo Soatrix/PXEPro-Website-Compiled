@@ -1,0 +1,15 @@
+{% load string_filters %}
+<div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+		<div class="col-12 pt-lg-5 mt-lg-5 text-center">
+			<h1 class="display-4 text-white animated zoomIn">{% if request.resolver_match.view_name == "pricing" %}Plans & Pricing{% elif request.resolver_match.view_name %}{{ request.resolver_match.view_name|reverse_slugify }}{% else %}Page Not Found{% endif %}</h1>
+			<a href="{% url 'home' %}" class="h5 text-white">Home</a>
+            <i class="far fa-circle text-white px-2"></i>
+            {% if request.resolver_match.view_name == "guides" or request.resolver_match.view_name == "frequently-asked-questions" %}
+                <a href="{% url 'support' %}" class="h5 text-white">Support</a>
+                <i class="far fa-circle text-white px-2"></i>
+            {% endif %}
+            <a href="{{ request.path }}" class="h5 text-white">{% if request.resolver_match.view_name == "pricing" %}Plans & Pricing{% elif request.resolver_match.view_name %}{{ request.resolver_match.view_name|reverse_slugify }}{% else %}Page Not Found{% endif %}</a>
+        </div>
+    </div>
+</div>
